@@ -3,9 +3,9 @@
 
 
 
- Django + React To-Do App
 
-## Quick Setup
+
+## To-Do List Web Application ( React + Django )
 
 Follow these steps to get the project running on your local machine:
 
