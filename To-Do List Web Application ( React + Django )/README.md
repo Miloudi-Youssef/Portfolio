@@ -3,8 +3,7 @@
 
 
 
- Djang![Uploading interface (2).png…]()
-o + React To-Do App
+ Django + React To-Do App
 
 ## Quick Setup
 
