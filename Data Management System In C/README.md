@@ -1,4 +1,4 @@
-#Système de Gestion de Films, Salles et Réservations en C
+## Système de Gestion de Films, Salles et Réservations en C
 
 
 Ce projet est une application en langage C permettant de gérer de manière complète les opérations d’un cinéma, notamment la gestion des films, des salles, des clients, des guichets, des réservations, des diffusions et de l’historique de visionnage.
