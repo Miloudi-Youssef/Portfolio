@@ -28,28 +28,7 @@ Le code source est organisé en deux dossiers principaux :
 - **Backend** : Node.js, Express.js, Axios, Cheerio, Puppeteer
 
 ---
-### Installation
 
-1. Cloner le dépôt :
-
-```bash
-git clone https://github.com/yourusername/react-node-web-scraper.git
-cd react-node-web-scraper
-```
-
-2. Installer les dépendances pour le backend :
-```bash
-cd server
-npm install
-```
-
-3. Installer les dépendances pour le frontend :
-```bash
-cd ../client
-npm install
-```
-
----
 
 ## Exécution de l'application
 
@@ -130,21 +109,16 @@ Make sure you have the following installed:
 
 ### Installation
 
-1. Clone the repository:
 
-bash
-git clone https://github.com/yourusername/react-node-web-scraper.git
-cd react-node-web-scraper /'''
-
-2. Install backend dependencies:
+. Install backend dependencies:
 cd server
 npm install
 
-3. Install frontend dependencies:
+. Install frontend dependencies:
 
 cd ../client
 npm install
-4. Running the Application
+. Running the Application
 Backend (Server) : 
 To start the backend server in development mode:
 cd server
@@ -153,10 +127,10 @@ Frontend (Client)
 Navigate to the client/ directory and run:
 npm run dev
 
-5. Building for Production : 
+. Building for Production : 
 npm run build
 
-6. To preview the production build locally:
+. To preview the production build locally:
 npm run preview
 
 
