@@ -1,5 +1,4 @@
 
-![interface](https://github.com/user-attachments/assets/42bc8905-20ee-48b3-be9f-395106fc00d9)
 
 
 Version Francaise : 
