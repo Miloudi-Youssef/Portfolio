@@ -64,17 +64,29 @@ MENU DU PROGRAMME :
 ORGANISATION DES FICHIERS :
 ------------------------------------------------------------
 • Field.java                      : Modélise une case de la grille
+
 • Kakuro.java                    : Main du programme, centralise la logique
+
 • KakuroSolver.java              : Résolution via backtracking
+
 • KakuroReader.java              : Interface pour lecture de fichier
+
 • GridReader*.java               : Lecteurs pour différents formats
+
 • GridReaderImposedFormat.java  : Lecteur du format symbolique imposé (ex : _, #, 12/5)
+
 • GridReaderIniFormat.java      : Lecteur du format INI structuré avec sections
+
 • ReaderFactory.java             : Sélection dynamique du lecteur
+
 • KakuroDisplay.java             : Affichage terminal
+
 • KakuroGUI.java                 : Affichage graphique (Swing)
+
 • puzzles/                       : Dossier contenant les grilles test
-• src/                           : C’est ici que se trouvent tous les fichiers .java, organisés par packages 
+
+• src/                           : C’est ici que se trouvent tous les fichiers .java, organisés par packages
+ 
 ------------------------------------------------------------
 FORMATS DE GRILLE SUPPORTÉS :
 ------------------------------------------------------------
