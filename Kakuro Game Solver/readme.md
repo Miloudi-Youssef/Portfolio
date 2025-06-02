@@ -1,7 +1,7 @@
 ============================================================
                  KAKURO SOLVER – PROJET JAVA                                        Miloudi Youcef 
 ============================================================
-![My Image](diagramme_des_classes_ Light.png)
+![My Image](diagramme_des_classes_Light.png)
 
 Ce projet est un solveur de grilles Kakuro développé en Java et swing.
 
