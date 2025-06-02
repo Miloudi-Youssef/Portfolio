@@ -1,6 +1,7 @@
 ============================================================
                  KAKURO SOLVER – PROJET JAVA                                        Miloudi Youcef 
 ============================================================
+![My Image](diagramme_des_classes_ Light.png)
 
 Ce projet est un solveur de grilles Kakuro développé en Java et swing.
 
@@ -34,6 +35,7 @@ java -cp bin src.Kakuro
 ( Kakuro avec "J" majiscule ) .
 ❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️
 ------------------------------------------------------------
+![My Image](affichageGui.png)
 MENU DU PROGRAMME :
 ------------------------------------------------------------
 
@@ -53,6 +55,8 @@ MENU DU PROGRAMME :
 
 ------------------------------------------------------------
 ⚠️ REMARQUE :
+
+
 ------------------------------------------------------------
  Si vous ne voyez pas apparaître la fenêtre de sélection de fichier (dans les options 2 ou 3), il se peut qu’elle soit ouverte derrière la fenêtre active, selon votre configuration système ou environnement graphique. Essayez de réduire ou déplacer les fenêtres ouvertes pour la retrouver.
 
