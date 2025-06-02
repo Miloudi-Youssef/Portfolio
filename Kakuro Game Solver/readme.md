@@ -1,5 +1,5 @@
 ============================================================
-                 KAKURO SOLVER – PROJET JAVA                                        Miloudi Youcef 
+                 KAKURO SOLVER – PROJET JAVA                             
 ============================================================
 ![My Image](diagramme_des_classes_Light.png)
 
