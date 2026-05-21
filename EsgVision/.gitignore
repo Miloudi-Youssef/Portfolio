@@ -1,0 +1,45 @@
+# -----------------------------------------------
+# ESG Vision - Selective Publication Policy
+# Core backend, pipeline, and ML modules are
+# proprietary and intentionally excluded.
+# -----------------------------------------------
+
+# Core ML & RAG pipeline (proprietary)
+/core/
+/rag/
+/ingestion/
+/api/
+/config/
+/scripts/
+/data/
+
+# Dependencies & environment
+requirements.txt
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Docker & infrastructure (excluded — backend-dependent)
+docker-compose.yml
+Dockerfile.backend
+Dockerfile.frontend
+setup.sh
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
