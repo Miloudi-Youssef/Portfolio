@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Cinephile</string>
+
+    <!-- Search -->
+    <string name="search_hint">Search movies…</string>
+    <string name="search_button">Search</string>
+    <string name="filter_year_hint">Year (e.g. 2023)</string>
+    <string name="filter_genre_hint">Genre</string>
+    <string name="filter_actor_hint">Actor name</string>
+    <string name="filter_director_hint">Director name</string>
+    <string name="no_results">No results found</string>
+    <string name="filters">Filters</string>
+    <string name="apply_filters">Apply Filters</string>
+
+    <!-- Details -->
+    <string name="synopsis">Synopsis</string>
+    <string name="cast">Cast</string>
+    <string name="director_label">Director: %s</string>
+    <string name="release_date_label">Released: %s</string>
+    <string name="add_to_watchlist">Add to Watchlist</string>
+    <string name="remove_from_watchlist">Remove from Watchlist</string>
+    <string name="added_to_watchlist">Added to current watchlist</string>
+    <string name="added_to_watchlist_named">Added to %s</string>
+    <string name="create_watchlist_first">Create a watchlist first</string>
+    <string name="removed_from_watchlist">Removed from watchlist</string>
+    <string name="removed_from_watchlist_named">Removed from %s</string>
+    <string name="no_current_watchlist">No current watchlist — create one first</string>
+    <string name="favorite">Favorite</string>
+    <string name="movie_poster">Movie poster</string>
+
+    <!-- Watchlist -->
+    <string name="watchlists">Watchlists</string>
+    <string name="new_watchlist">New Watchlist</string>
+    <string name="rename_watchlist">Rename Watchlist</string>
+    <string name="set_current">Set as current</string>
+    <string name="current_watchlist">Current</string>
+    <string name="watchlist_name_hint">Watchlist name</string>
+    <string name="watchlist_deleted">Watchlist deleted</string>
+    <string name="delete_watchlist">Delete watchlist</string>
+    <string name="delete_watchlist_confirm">Delete this watchlist? All movies in it will be removed.</string>
+    <string name="movie_count">%d movie(s)</string>
+
+    <!-- Quiz -->
+    <string name="quizzes">Quizzes</string>
+    <string name="new_quiz">New Quiz</string>
+    <string name="play_quiz">Play</string>
+    <string name="last_score">Last score: %d</string>
+    <string name="question_of">Question %1$d of %2$d</string>
+    <string name="quiz_finished">Quiz Finished!</string>
+    <string name="your_score">Your score: %1$d / %2$d pts</string>
+    <string name="select_watchlist">Select a watchlist</string>
+    <string name="question_release_year">What is the release year of \"%s\"?</string>
+    <string name="question_director">Who directed \"%s\"?</string>
+    <string name="question_actor">Which actor appeared in \"%s\"?</string>
+
+    <!-- Recommendations -->
+    <string name="recommendations">Recommendations</string>
+    <string name="no_recommendations">Rate some movies or mark favorites to get personalized recommendations.</string>
+    <string name="refresh">Refresh</string>
+    <string name="trending_banner">Trending now — rate movies or mark favourites to unlock personalised picks</string>
+    <string name="section_for_you">For You</string>
+
+    <!-- Navigation -->
+    <string name="nav_search">Search</string>
+    <string name="nav_watchlists">Watchlists</string>
+    <string name="nav_quiz">Quiz</string>
+    <string name="nav_recommendations">Discover</string>
+
+    <!-- Genres -->
+    <string name="genre_all">All</string>
+    <string name="genre_action">Action</string>
+    <string name="genre_scifi">Sci-Fi</string>
+    <string name="genre_drama">Drama</string>
+    <string name="genre_comedy">Comedy</string>
+    <string name="genre_thriller">Thriller</string>
+    <string name="genre_horror">Horror</string>
+    <string name="genre_animation">Animation</string>
+
+    <!-- Empty states -->
+    <string name="empty_watchlists">No watchlists yet.\nTap + to create your first one.</string>
+    <string name="empty_quizzes">No quizzes yet.\nCreate one from a watchlist.</string>
+
+    <!-- Favorites Watchlist -->
+    <string name="favorites_watchlist_name">Favorites</string>
+    <string name="favorites_banner">Movies in this list shape your recommendations in the Discover page</string>
+
+    <!-- Misc -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="long_press_to_add">Long press to add to current watchlist</string>
+    <string name="delete_quiz_confirm">Delete this quiz?</string>
+    <string name="next_question">Next →</string>
+    <string name="pick_difficulty">Select Difficulty</string>
+    <string name="difficulty_easy_desc">Easy - Release years only</string>
+    <string name="difficulty_medium_desc">Medium - Years + Directors</string>
+    <string name="difficulty_hard_desc">Hard - All categories</string>
+    <string name="difficulty_label">Difficulty: %s</string>
+    <string name="history_header">Attempt History</string>
+    <string name="no_attempts_yet">No attempts yet</string>
+</resources>

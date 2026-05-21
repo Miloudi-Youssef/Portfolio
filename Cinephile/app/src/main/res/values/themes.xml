@@ -1,0 +1,37 @@
+<resources>
+    <!-- main app theme — dark Material3-based, no action bar, edge-to-edge system bars -->
+    <style name="Theme.Cinephile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <!-- colorOnSurface is used by Material chips, text fields, etc. for text/icon color.
+             Without this, DayNight resolves it as black in light mode, making chips invisible. -->
+        <item name="colorOnSurface">@color/colorOnBackground</item>
+        <item name="android:textColorPrimary">@color/colorOnBackground</item>
+        <item name="android:textColorSecondary">@color/colorOnBackground</item>
+        <!-- system bar colors — match dark background so edge-to-edge looks seamless -->
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+
+    <!-- genre chips — dark filter chips with red ripple, no checkmark icon -->
+    <style name="CinephileChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_background</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="chipStrokeColor">#666666</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="rippleColor">#44E50914</item>
+    </style>
+
+    <!-- circular image overlay — used by ShapeableImageView for actor photos -->
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

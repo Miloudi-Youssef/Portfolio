@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- attempt history row — formatted date on the left, score on the right -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="10dp"
+    android:background="@color/colorSurface2"
+    android:layout_marginBottom="4dp">
+
+    <!-- attempt date — formatted "MMM d, yyyy  HH:mm" -->
+    <TextView
+        android:id="@+id/tv_attempt_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/colorSubtext"
+        android:textSize="13sp" />
+
+    <!-- attempt score — "X / Y pts" in accent color -->
+    <TextView
+        android:id="@+id/tv_attempt_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

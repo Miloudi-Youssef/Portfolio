@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splash screen — full-bleed black background, animated logo centered -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- splash animation — AnimatedImageDrawable loaded at runtime by SplashActivity -->
+    <ImageView
+        android:id="@+id/iv_splash_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="48dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/app_name" />
+
+</FrameLayout>

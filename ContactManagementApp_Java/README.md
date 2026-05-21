@@ -1,7 +1,9 @@
 
-![interface (1)](https://github.com/user-attachments/assets/ec303889-c373-4034-84cc-45e27e2f20b8)
 
-Version Francaise : 
+
+
+![interface](C:\Users\milou\Desktop\portfoliofinal\Portfolio\ContactManagementApp_Java\interface.png)
+
 # Contact Management System - API REST
 
 Ce projet est une API backend développée en **Java** avec **Spring Boot** et **MySQL**, permettant de gérer des contacts. Elle offre une architecture RESTful claire et modulaire, idéale pour une intégration avec des applications web ou mobiles.

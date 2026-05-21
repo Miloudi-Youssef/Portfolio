@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_nav_search"
+        android:title="@string/nav_search" />
+
+    <item
+        android:id="@+id/recommendationFragment"
+        android:icon="@drawable/ic_nav_discover"
+        android:title="@string/nav_recommendations" />
+
+    <item
+        android:id="@+id/watchlistFragment"
+        android:icon="@drawable/ic_nav_watchlist"
+        android:title="@string/nav_watchlists" />
+
+    <item
+        android:id="@+id/quizFragment"
+        android:icon="@drawable/ic_nav_quiz"
+        android:title="@string/nav_quiz" />
+
+</menu>

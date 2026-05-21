@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- brand red — primary action color, buttons, FABs -->
+    <color name="colorPrimary">#E50914</color>
+    <!-- darker red — used for pressed states and status bar -->
+    <color name="colorPrimaryDark">#B20710</color>
+    <!-- IMDb gold — accent color, rating label, last score badge, Favorites watchlist -->
+    <color name="colorAccent">#F5C518</color>
+
+    <!-- dark background hierarchy — three levels of surface elevation -->
+    <color name="colorBackground">#121212</color>   <!-- base app background -->
+    <color name="colorSurface">#1E1E1E</color>       <!-- cards, dialogs -->
+    <color name="colorSurface2">#252525</color>      <!-- elevated card backgrounds -->
+    <color name="colorSurface3">#2D2D2D</color>      <!-- chips, score badges, actor photo bg -->
+
+    <!-- text colors -->
+    <color name="colorOnBackground">#EEEEEE</color>  <!-- primary text on dark backgrounds -->
+    <color name="colorSubtext">#999999</color>       <!-- secondary / hint text -->
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

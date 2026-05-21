@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- search screen — two modes: landing (logo + search bar) and results (grid + collapsible filter panel) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:paddingTop="24dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <!--
+        spacer_top (weight=2) + spacer_bottom (weight=3) = 2:3 split.
+        The top spacer is smaller, so the content lands at ~40% of free height
+        instead of 50%, shifting the block ~60–70 dp upward vs a perfect centre.
+        Both are GONE in results mode so the RecyclerView (weight=1) fills instead.
+    -->
+    <View
+        android:id="@+id/spacer_top"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <!-- Logo — landing mode only -->
+    <ImageView
+        android:id="@+id/iv_search_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/search_page_logo"
+        android:scaleType="fitCenter"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="36dp"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Search row — always visible -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
+
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/search_hint"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:background="@drawable/search_input_background"
+            android:padding="10dp"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:layout_marginEnd="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_button"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <!-- Filter toggle — results mode only -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_toggle_filters"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/filters"
+        android:textColor="@color/colorOnBackground"
+        app:strokeColor="@color/colorPrimary"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone" />
+
+    <!-- Collapsible filter panel -->
+    <LinearLayout
+        android:id="@+id/filter_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/colorSurface"
+        android:padding="8dp"
+        android:layout_marginBottom="8dp">
+
+        <EditText
+            android:id="@+id/filter_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_year_hint"
+            android:textColor="@color/colorOnBackground"
+            android:textColorHint="#888888"
+            android:inputType="number"
+            android:padding="8dp"
+            android:layout_marginBottom="6dp" />
+
+        <Spinner
+            android:id="@+id/spinner_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:padding="8dp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/filter_actor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_actor_hint"
+            android:textColor="@color/colorOnBackground"
+            android:textColorHint="#888888"
+            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/filter_director"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/filter_director_hint"
+            android:textColor="@color/colorOnBackground"
+            android:textColorHint="#888888"
+            android:inputType="textPersonName"
+            android:padding="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_apply_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_filters"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            app:backgroundTint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <!-- Centering spacer — landing mode only -->
+    <View
+        android:id="@+id/spacer_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+
+    <!-- Loading indicator -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <!-- Empty / no-results message -->
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_results"
+        android:textColor="@color/colorOnBackground"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:visibility="gone" />
+
+    <!-- Results grid — results mode only, takes all remaining space -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/results_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:visibility="gone" />
+
+</LinearLayout>
