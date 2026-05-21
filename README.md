@@ -19,7 +19,7 @@
 
 ## About This Repository
 
-This repository contains a selection of my academic and personal software projects — ranging from AI-oriented platforms and full-stack web applications to algorithms and systems-level work.
+This repository contains a selection of my academic and personal software projects, ranging from AI-oriented platforms and full-stack web applications to algorithms and systems-level work.
 
 It is a living repository and will be **progressively updated** with newer and more advanced projects as I complete them.
 
@@ -35,18 +35,18 @@ Where appropriate and safe to do so, I may present **selected screenshots, descr
 
 ## Featured Projects
 
-### ESG Vision — Knowledge Graph Intelligence Platform
+### ESG Vision: Knowledge Graph Intelligence Platform
 
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 ![Stack](https://img.shields.io/badge/stack-Python%20%7C%20FastAPI%20%7C%20React%20%7C%20Neo4j%20%7C%20Docker-blue)
 
 An AI-oriented platform concept for ESG and CSRD document analysis. Focused on document ingestion, structured extraction, GraphRAG-style reasoning, knowledge graph exploration, and sustainability reporting intelligence.
 
-The architecture explores a full pipeline from raw document intake to graph-based querying — designed to surface relationships between regulatory frameworks, entities, and obligations within ESG reporting contexts.
+The architecture explores a full pipeline from raw document intake to graph-based querying: designed to surface relationships between regulatory frameworks, entities, and obligations within ESG reporting contexts.
 
 **Tech Stack:** Python, FastAPI, React, Neo4j, LangChain, Docker, Pydantic
 
-**[→ View Project](./EsgVision)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/01-esg-vision)**
 
 ---
 
@@ -62,7 +62,7 @@ An Android application designed for movie enthusiasts. Focused on browsing, sear
 
 **Tech Stack:** Android, Kotlin, Gradle
 
-**[→ View Project](./Cinephile)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/02-Cinephile)**
 
 ---
 
@@ -74,7 +74,7 @@ A full-featured contact management application built with Java and Spring Boot. 
 
 **Tech Stack:** Java, Spring Boot, Maven
 
-**[→ View Project](./ContactManagementApp_Java)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/03-contact-management-api)**
 
 ---
 
@@ -86,7 +86,7 @@ A systems-level data management application written in C. Focuses on low-level m
 
 **Tech Stack:** C
 
-**[→ View Project](./Data%20Management%20System%20In%20C)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/07-data-management-c)**
 
 ---
 
@@ -98,7 +98,7 @@ A full-stack web scraping application with a dedicated backend and frontend. Des
 
 **Tech Stack:** Python, Node.js, React
 
-**[→ View Project](./Fullstack%20Scraping%20App)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/04-fullstack-scraping-app)**
 
 ---
 
@@ -110,7 +110,7 @@ A solver for the Kakuro number puzzle, exploring constraint propagation and algo
 
 **Tech Stack:** Java
 
-**[→ View Project](./Kakuro%20Game%20Solver)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/06-kakuro-solver)**
 
 ---
 
@@ -122,19 +122,19 @@ A full-stack task management application built with React on the frontend and Dj
 
 **Tech Stack:** React, Django, Python, REST API
 
-**[→ View Project](./To-Do%20List%20Web%20Application%20%28%20React%20%2B%20Django%20%29)**
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/05-todo-react-django)**
 
 ---
 
 ## Skills Demonstrated
 
-- **AI & Knowledge Graphs** — RAG pipelines, graph-based reasoning, document extraction
-- **Full-Stack Web Development** — REST APIs, SPA frontends, backend services
-- **Systems Programming** — C, memory management, file I/O
-- **Mobile Development** — Android application design with Kotlin
-- **Algorithm Design** — Constraint solving, search algorithms
-- **Data Engineering** — Web scraping, data pipelines, structured storage
-- **DevOps Basics** — Docker, containerized environments
+- **AI & Knowledge Graphs**: RAG pipelines, graph-based reasoning, document extraction
+- **Full-Stack Web Development**: REST APIs, SPA frontends, backend services
+- **Systems Programming**: C, memory management, file I/O
+- **Mobile Development**: Android application design with Kotlin
+- **Algorithm Design**: Constraint solving, search algorithms
+- **Data Engineering**: Web scraping, data pipelines, structured storage
+- **DevOps Basics**: Docker, containerized environments
 
 ---
 
@@ -167,7 +167,7 @@ This repository will be updated with newer projects in the coming weeks, includi
 
 For professional inquiries, client project showcases, or freelance web development services, visit my platform or reach out directly.
 
-> Client work, production deployments, and commercial projects are presented separately — this repository reflects only a portion of my overall work.
+> Client work, production deployments, and commercial projects are presented separately: this repository reflects only a portion of my overall work.
 
 ---
 

@@ -24,7 +24,7 @@ Pour activer l’affichage graphique (Swing), vous devez impérativement install
 ❗️Sans ces bibliothèques, les options graphiques (2 et 3) peuvent possiblement provoquer une erreur.❗️
 
 ------------------------------------------------------------
-LANCEMENT : IMPORTANT ! ❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️
+LANCEMENT :
 ------------------------------------------------------------
 1. Compilez depuis le dossier final/ :
 Depuis le terminal :
@@ -32,8 +32,8 @@ javac -d bin src/*.java
 2. Lancez le programme depuis le même endroit(final/) :
 java -cp bin src.Kakuro
 
-( Kakuro avec "J" majiscule ) .
-❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️
+( Kakuro avec "K" majiscule ) .
+
 ------------------------------------------------------------
 ![My Image](affichageGui.png)
 MENU DU PROGRAMME :
@@ -53,12 +53,7 @@ MENU DU PROGRAMME :
 
 5. Quitter le programme
 
-------------------------------------------------------------
-⚠️ REMARQUE :
 
-
-------------------------------------------------------------
- Si vous ne voyez pas apparaître la fenêtre de sélection de fichier (dans les options 2 ou 3), il se peut qu’elle soit ouverte derrière la fenêtre active, selon votre configuration système ou environnement graphique. Essayez de réduire ou déplacer les fenêtres ouvertes pour la retrouver.
 
 ------------------------------------------------------------
 ORGANISATION DES FICHIERS :
@@ -86,7 +81,7 @@ ORGANISATION DES FICHIERS :
 • puzzles/                       : Dossier contenant les grilles test
 
 • src/                           : C’est ici que se trouvent tous les fichiers .java, organisés par packages
- 
+
 ------------------------------------------------------------
 FORMATS DE GRILLE SUPPORTÉS :
 ------------------------------------------------------------
