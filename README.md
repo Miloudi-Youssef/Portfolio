@@ -29,7 +29,7 @@ It is a living repository and will be **progressively updated** with newer and m
 
 As a **freelance web developer**, a significant portion of my work is done for clients and cannot be shared publicly due to confidentiality agreements, security considerations, and access restrictions.
 
-Where appropriate and safe to do so, I may present **selected screenshots, descriptions, or case studies** for some client projects. For a broader view of my professional and commercial work, feel free to visit my web development platform directly (see [Contact & Professional Work](#contact--professional-work)).
+Where appropriate and safe to do so, I may present **selected screenshots, descriptions, or case studies** for some client projects. For a broader view of my professional and commercial work, feel free to visit my web development platform directly (see [Contact & Professional Work](#contact--professional-work)). : https://webcrafter-agency.com/
 
 ---
 
@@ -165,7 +165,7 @@ This repository will be updated with newer projects in the coming weeks, includi
 
 ## Contact & Professional Work
 
-For professional inquiries, client project showcases, or freelance web development services, visit my platform or reach out directly.
+For professional inquiries, client project showcases, or freelance web development services, visit my platform or reach out directly at : https://www.webcrafter-agency.com/ . 
 
 > Client work, production deployments, and commercial projects are presented separately: this repository reflects only a portion of my overall work.
 
