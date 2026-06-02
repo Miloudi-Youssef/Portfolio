@@ -1,0 +1,762 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cluedo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+  <script src="gamescene.js"></script>
+</head>
+
+<body class="theme-dark">
+
+  <!-- ================================================ -->
+  <!-- SCREEN: HOME                                      -->
+  <!-- ================================================ -->
+  <section id="view-home" class="screen-view active">
+    <div class="home-top-bar"
+      style="position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 15px; z-index: 10;">
+      <button class="top-right-settings-static" onclick="openSettingsFromGame()" aria-label="Settings"
+        style="background: none; border: none; color: #d4af37; cursor: pointer; padding: 0;">
+        <svg class="icon-gear" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+          fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="home-container">
+      <div class="logo-area">
+        <div class="ornament-gold top-ornament"></div>
+        <h1 class="cluedo-title">CLUEDO</h1>
+        <p class="cluedo-subtitle">THE INVESTIGATION</p>
+        <div class="ornament-gold bottom-ornament"></div>
+      </div>
+      <p class="who-did-it">Who did it, find out...</p>
+      <div class="home-actions">
+        <button class="btn-play-gold" onclick="goToAuth()">Play</button>
+        <button class="btn-settings-outline"
+          onclick="document.getElementById('rules-modal').classList.remove('hidden')">Rules</button>
+        <button class="btn-quit-danger" onclick="handleQuit()">Quit</button>
+      </div>
+      <div class="solve-mystery-container">
+        <div class="mystery-line"></div>
+        <p class="solve-mystery">SOLVE THE MYSTERY</p>
+        <div class="mystery-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: AUTH (Signup / Login)                     -->
+  <!-- ================================================ -->
+  <section id="view-auth" class="screen-view hidden">
+    <div class="auth-container mode-selection-container"
+      style="max-width: 480px; margin: 0 auto; text-align: center; padding-top: 12vh;">
+      <div class="bureau-badge" style="margin: 0 auto 20px; font-size: 14px; padding: 8px 20px;">CLUEDO BUREAU</div>
+      <h2 class="title-gold large" id="auth-title" style="font-size: 40px; margin-bottom: 15px;">IDENTIFICATION</h2>
+      <p class="subtitle-light" id="auth-subtitle"
+        style="font-size: 16px; margin-bottom: 30px; color: rgba(242, 238, 233, 0.8);">Log in to enter the investigation
+      </p>
+
+      <div class="auth-form registration-form-box" style="margin-top:20px; text-align: left; padding: 40px;">
+        <div class="input-group">
+          <label
+            style="font-size: 13px; color: #d4af37; letter-spacing: 2px; margin-bottom: 8px; display: block;">DETECTIVE
+            NAME</label>
+          <input type="text" id="auth-username" placeholder="Enter your alias..." maxlength="16" class="input-gold"
+            style="width: 100%; box-sizing: border-box; padding: 16px; font-size: 16px;">
+        </div>
+
+        <div id="auth-email-group" style="display: none; margin-top: 25px;">
+          <label
+            style="font-size: 13px; color: #d4af37; letter-spacing: 2px; margin-bottom: 8px; display: block;">BUREAU
+            EMAIL</label>
+          <input type="email" id="auth-email" placeholder="detective@bureau.com" class="input-gold"
+            style="width: 100%; box-sizing: border-box; padding: 16px; font-size: 16px;">
+        </div>
+
+        <div class="input-group" style="margin-top: 25px;">
+          <label
+            style="font-size: 13px; color: #d4af37; letter-spacing: 2px; margin-bottom: 8px; display: block;">ACCESS
+            CODE</label>
+          <input type="password" id="auth-password" placeholder="Enter your password..." class="input-gold"
+            style="width: 100%; box-sizing: border-box; padding: 16px; font-size: 16px;">
+        </div>
+
+        <div id="forgot-password-container" style="text-align: right; margin-top: 10px;">
+          <span id="forgot-password-link"
+            style="font-size: 12px; color: #a19a90; cursor: pointer; text-decoration: underline;"
+            onclick="handleRecoverCode()">Forgot access code?</span>
+        </div>
+
+        <p id="auth-error"
+          style="color: #ff4d4d; margin-top: 15px; min-height: 20px; font-size: 15px; text-align: center;"></p>
+
+        <button id="btn-auth-submit" class="btn-play-gold" onclick="handleAuthSubmit()"
+          style="width: 100%; margin-top: 15px; padding: 18px; font-size: 18px;">LOG IN</button>
+      </div>
+
+      <p style="margin-top: 25px; color: #a19a90; cursor: pointer; font-size: 16px;" onclick="toggleAuthMode()">
+        <span id="auth-toggle-text">New detective?</span>
+        <span style="color: #d4af37; text-decoration: underline; font-weight: 500;" id="auth-toggle-link">Register
+          here</span>
+      </p>
+
+      <button class="btn-back-link" onclick="showView('view-home')">← Back to Home</button>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: SETTINGS                                  -->
+  <!-- ================================================ -->
+  <div id="settings-overlay" class="settings-overlay hidden">
+    <div class="settings-panel-wrapper">
+      <div class="folder-ui settings-scrollable">
+        <button class="settings-panel-close" onclick="closeSettings()">✕</button>
+        <h2 class="title-gold">SETTINGS</h2>
+        <p class="subtitle-paper">Customize your investigation experience</p>
+        <div class="settings-content-wrapper">
+          <div class="settings-group-folder">
+            <h3>AUDIO</h3>
+            <div class="row-setting">
+              <span>Music</span>
+              <label class="switch-gold">
+                <input type="checkbox" id="music-toggle" onchange="toggleMusic()">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="row-setting">
+              <span>Music Volume</span>
+              <input type="range" id="music-volume" class="slider-gold" min="0" max="1" step="0.05" value="0.5" oninput="updateMusicVolume()" style="flex: 1; max-width: 150px;">
+            </div>
+            <div class="row-setting">
+              <span>Sound Effects</span>
+              <label class="switch-gold">
+                <input type="checkbox" id="sfx-toggle" onchange="toggleSfx()">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+          <div class="settings-group-folder">
+            <h3>DISPLAY</h3>
+            <div class="row-setting">
+              <span>Fullscreen Mode</span>
+              <label class="switch-gold"><input type="checkbox" id="fullscreen-toggle"
+                  onchange="toggleFullscreen()"><span class="slider"></span></label>
+            </div>
+            <div class="row-setting">
+              <span>Colorblind Mode</span>
+              <label class="switch-gold"><input type="checkbox" id="colorblind-toggle"
+                  onchange="toggleColorblind()"><span class="slider"></span></label>
+            </div>
+          </div>
+          <div class="settings-group-folder">
+            <h3>PROFILE</h3>
+            <div id="profile-content" class="row-setting column-setting"></div>
+            <button id="settings-disconnect-btn" class="btn-danger" onclick="disconnect()"
+              style="display:none;">Disconnect</button>
+          </div>
+          <div id="settings-leave-group" class="settings-group-folder" style="display: none;">
+            <h3>MATCH</h3>
+            <p style="font-size: 13px; color: rgba(242, 238, 233, 0.7); margin-top: 0;">Leave the current investigation and return to the lobby.</p>
+            <button class="btn-danger" onclick="window.cleanupOldGame(); closeSettings(); showView('view-home');">BACK TO MENU</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: GAME MODE                                 -->
+  <!-- ================================================ -->
+  <section id="view-game-mode" class="screen-view hidden">
+    <div class="mode-selection-container">
+      <div class="bureau-badge">INVESTIGATION BUREAU</div>
+      <h2 class="title-gold large">Game Mode</h2>
+      <p class="subtitle-light">Create or join a game</p>
+      <div class="cards-wrapper">
+        <div class="mode-card" onclick="handleCreateGame()">
+          <div class="icon-circle"><span class="icon">👤+</span></div>
+          <h3>Create Game</h3>
+          <p>Start a new investigation and invite your friends</p>
+        </div>
+        <div class="mode-card" onclick="handleJoinGame()">
+          <div class="icon-circle"><span class="icon">➜</span></div>
+          <h3>Join Game</h3>
+          <p>Enter the code to join an ongoing investigation</p>
+        </div>
+      </div>
+      <button class="btn-back-link" onclick="showView('view-home')">← Back</button>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: CREATE GAME                               -->
+  <!-- ================================================ -->
+  <section id="view-create-game" class="screen-view hidden">
+    <div class="create-game-wrapper">
+      <div class="create-card">
+        <div class="create-card-badge">NEW INVESTIGATION</div>
+        <h2 class="create-card-title">CREATE A GAME</h2>
+        <p class="create-card-desc">A code will be generated — share it with your suspects</p>
+        <div class="create-input-group">
+          <label>DETECTIVE NAME</label>
+          <input type="text" id="createNameInput" placeholder="Player1" maxlength="16">
+        </div>
+        <button id="btn-generate-code" class="btn-play-gold" style="margin-top: 12px;">GENERATE CODE</button>
+
+        <div id="createCodeSection" class="create-code-section hidden">
+          <div class="create-code-box">
+            <div class="create-code-label">YOUR CASE CODE</div>
+            <div class="create-code-value" id="createCodeDisplay">- - - -</div>
+            <p class="create-code-hint">Share this code with other detectives</p>
+          </div>
+          <button id="btn-continue-create" class="btn-play-gold">CONTINUE →</button>
+        </div>
+
+        <button class="create-back-btn" onclick="showView('view-game-mode')">← Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: JOIN GAME                                 -->
+  <!-- ================================================ -->
+  <section id="view-join-game" class="screen-view hidden">
+    <div class="join-game-wrapper">
+      <div class="join-card">
+        <div class="create-card-badge" style="margin: 0 auto 12px;">FINDING CASE</div>
+        <h2 class="join-card-title">JOIN A GAME</h2>
+        <p class="join-card-desc">Enter the case code provided by the host</p>
+        <div class="create-input-group">
+          <label>DETECTIVE NAME</label>
+          <input type="text" id="joinNameInput" placeholder="Enter your name..." maxlength="16">
+        </div>
+        <div class="create-input-group">
+          <label>CASE CODE</label>
+          <input type="text" id="joinCodeInput" placeholder="XXXX" maxlength="4"
+            style="letter-spacing: 6px; text-align: center; font-size: 22px;">
+        </div>
+        <button id="btn-confirm-join" class="btn-play-gold" style="margin-top: 8px;">ENTER INVESTIGATION</button>
+        <button class="btn-back-link" onclick="showView('view-game-mode')"
+          style="margin-top: 10px; font-size: 13px; padding: 10px;">← Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legacy hidden setup (kept for JS compatibility) -->
+  <section id="view-lobby-setup" class="screen-view hidden" style="display:none!important;">
+    <input type="text" id="setupNameInput" style="display:none;">
+    <input type="text" id="setupCodeInput" style="display:none;">
+    <div id="codeGroup" style="display:none;"></div>
+    <button id="btn-confirm-setup" style="display:none;"></button>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: CHARACTER SELECTION                       -->
+  <!-- ================================================ -->
+  <section id="view-character-selection" class="screen-view hidden">
+    <div class="character-selection-wrapper">
+      <h2 class="title-gold character-page-title" style="margin-bottom: 5px;">NEW DETECTIVE</h2>
+      <p class="subtitle-light character-page-subtitle" style="margin-bottom: 25px;">Register your information</p>
+
+      <div class="registration-form-box">
+        <div class="form-subtitle"><span class="square"></span> REGISTRATION FORM</div>
+        <fieldset class="character-selection" style="border: none; padding: 0; margin: 0;">
+          <legend class="section-title">CHOOSE YOUR CHARACTER</legend>
+          <div class="character-grid">
+            <label class="character-card">
+              <input type="radio" name="character" value="plum" required>
+              <img src="assets/ui/suspects/plum.png" alt="Professor Plum" class="character-avatar">
+              <div class="character-details"><span class="dot plum-dot"></span><span class="character-name">Professor
+                  Plum</span></div>
+            </label>
+            <label class="character-card">
+              <input type="radio" name="character" value="scarlet">
+              <img src="assets/ui/suspects/scarlet.png" alt="Miss Scarlet" class="character-avatar">
+              <div class="character-details"><span class="dot scarlet-dot"></span><span class="character-name">Miss
+                  Scarlet</span></div>
+            </label>
+            <label class="character-card">
+              <input type="radio" name="character" value="mustard">
+              <img src="assets/ui/suspects/mustard.png" alt="Colonel Mustard" class="character-avatar">
+              <div class="character-details"><span class="dot mustard-dot"></span><span class="character-name">Colonel
+                  Mustard</span></div>
+            </label>
+            <label class="character-card">
+              <input type="radio" name="character" value="white">
+              <img src="assets/ui/suspects/white.png" alt="Mrs. White" class="character-avatar">
+              <div class="character-details"><span class="dot white-dot"></span><span class="character-name">Mrs.
+                  White</span></div>
+            </label>
+            <label class="character-card">
+              <input type="radio" name="character" value="peacock">
+              <img src="assets/ui/suspects/peacock.png" alt="Mrs. Peacock" class="character-avatar">
+              <div class="character-details"><span class="dot peacock-dot"></span><span class="character-name">Mrs.
+                  Peacock</span></div>
+            </label>
+            <label class="character-card">
+              <input type="radio" name="character" value="green">
+              <img src="assets/ui/suspects/green.png" alt="Mr. Green" class="character-avatar">
+              <div class="character-details"><span class="dot green-dot"></span><span class="character-name">Mr.
+                  Green</span></div>
+            </label>
+          </div>
+        </fieldset>
+        <button id="btn-start-final" class="btn-start-final">CONTINUE INVESTIGATION</button>
+      </div>
+      <button class="btn-back-link" onclick="window.cleanupOldGame(); isCreating ? showView('view-create-game') : showView('view-join-game')">← Back</button>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- MODAL: RULES                                      -->
+  <!-- ================================================ -->
+  <div id="rules-modal" class="gameModalOverlay hidden" style="z-index: 3000;">
+    <div class="modalCard rules-card">
+      <div class="modalHeader">
+        <h3 class="title-gold" style="font-size: 24px;">RULES OF CLUEDO</h3>
+        <button class="close-btn-minimal"
+          onclick="document.getElementById('rules-modal').classList.add('hidden')">✕</button>
+      </div>
+      <div class="rules-content">
+        <h4>Objective</h4>
+        <p>Find out who committed the crime, with what weapon, and in which room.</p>
+        <h4>Movement</h4>
+        <p>Roll the dice to move across the board to enter rooms. Once inside a room, you can make a suggestion.</p>
+        <h4>Suggestions & Accusations</h4>
+        <p><strong>Suggestion:</strong> Guess the suspect and weapon while in a room. Other players must secretly show
+          you one card that disproves it if they have it.</p>
+        <p><strong>Accusation:</strong> Once you are sure, make a final accusation. If you are right, you win! If wrong,
+          you are eliminated.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- MODAL: NOTEBOOK                                   -->
+  <!-- ================================================ -->
+  <div id="notebookModal" class="gameModalOverlay hidden">
+    <div class="gameModal notebookModalCard">
+      <div class="gameModalHeader notebookHeader">
+        <div>
+          <h2>Detective's Notebook</h2>
+          <p>Click items to mark their status</p>
+        </div>
+        <button class="closeModalBtn" data-close="notebookModal">✕</button>
+      </div>
+      <div class="notebookLegend">
+        <div><span class="legendIcon unknown">—</span> Unknown</div>
+        <div><span class="legendIcon possible">?</span> Possible</div>
+        <div><span class="legendIcon impossible">✕</span> Ruled Out</div>
+        <div><span class="legendIcon confirmed">✓</span> Confirmed</div>
+      </div>
+      <div class="notebookContent">
+        <div class="notebookColumns">
+          <div class="notebookSection">
+            <h3 class="notebookTitle suspectsTitle">Suspects</h3>
+            <div id="notebookSuspects" class="notebookList"></div>
+          </div>
+          <div class="notebookSection">
+            <h3 class="notebookTitle weaponsTitle">Weapons</h3>
+            <div id="notebookWeapons" class="notebookList"></div>
+          </div>
+          <div class="notebookSection">
+            <h3 class="notebookTitle roomsTitle">Rooms</h3>
+            <div id="notebookRooms" class="notebookList"></div>
+          </div>
+        </div>
+      </div>
+      <div class="gameModalFooter">
+        <p>"The game is afoot!" - Track your deductions carefully</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- MODAL: ACCUSATION                                 -->
+  <!-- ================================================ -->
+  <div id="accusationModal" class="gameModalOverlay hidden">
+    <div class="gameModal accusationModalCard">
+      <div class="gameModalHeader accusationHeader">
+        <div>
+          <h2>Suggest or Accuse</h2>
+          <p>Suggest to gather clues — Accuse only when certain!</p>
+        </div>
+        <button class="closeModalBtn" data-close="accusationModal">✕</button>
+      </div>
+      <div class="accusationContent">
+        <div class="accusationGroup">
+          <h3>Who committed the murder?</h3>
+          <div id="accusationSuspects" class="accusationGrid"></div>
+        </div>
+        <div class="accusationGroup">
+          <h3>What weapon was used?</h3>
+          <div id="accusationWeapons" class="accusationGrid"></div>
+        </div>
+        <div class="accusationGroup">
+          <h3>Where did it happen?</h3>
+          <div id="accusationRooms" class="accusationGrid"></div>
+        </div>
+      </div>
+      <div class="accusationFooter">
+        <button id="confirmSuggestBtn" class="bigAccusationBtn suggestFooterBtn" disabled>Suggest</button>
+        <button id="confirmAccusationBtn" class="bigAccusationBtn" disabled>Accuse</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SCREEN: GAME                                      -->
+  <!-- ================================================ -->
+  <section id="view-game" class="screen-view hidden">
+
+    <div id="gameTopHud" class="game-top-hud"
+      style="position: absolute; top: 14px; right: 14px; display: flex; align-items: flex-start; gap: 10px; z-index: 200;">
+      <div
+        style="display: flex; align-items: center; gap: 10px; background: rgba(15, 20, 30, 0.8); border: 1px solid #d4af37; padding: 5px 15px; border-radius: 20px; font-family: 'Special Elite', cursive; color: #f2eee9;">
+        <div
+          style="width: 28px; height: 28px; border-radius: 50%; background: #900025; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 1px solid #d4af37; font-size: 13px;"
+          id="game-user-initial">D</div>
+        <span id="game-user-name">Detective</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; margin-top: 3px;">
+        <button onclick="openSettingsFromGame()" aria-label="Settings"
+          style="background: none; border: none; color: #d4af37; cursor: pointer; padding: 0; display: flex;">
+          <svg class="icon-gear" viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2"
+            fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+          </svg>
+        </button>
+        <button onclick="document.getElementById('rules-modal').classList.remove('hidden')" aria-label="How to Play"
+          title="Rules"
+          style="background: none; border: none; color: #d4af37; cursor: pointer; padding: 0; display: flex; margin-top: 10px;">
+          <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="app">
+
+      <div id="cardChoiceModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div
+          style="background: #222; padding: 20px; border-radius: 8px; color: white; text-align: center; border: 2px solid #fff; max-width: 400px;">
+          <h2>🃏 Prove them wrong!</h2>
+          <p id="cardChoiceModalText">Which card do you want to show?</p>
+          <div id="cardChoiceButtons" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;"></div>
+        </div>
+      </div>
+
+      <div id="alertModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div
+          style="background: #222; padding: 20px; border-radius: 8px; color: white; text-align: center; border: 2px solid #fff; max-width: 400px;">
+          <h2 id="alertModalTitle">ℹ️ Info</h2>
+          <p id="alertModalText">Message</p>
+          <button id="alertModalClose"
+            style="margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; background: #444; color: white; border: 1px solid #777; border-radius: 5px;">OK</button>
+        </div>
+      </div>
+
+      <div id="doorModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div
+          style="background: #222; padding: 20px; border-radius: 8px; color: white; text-align: center; border: 2px solid #fff;">
+          <h2>🚪 Choice of exit door</h2>
+          <p>Which door would you like to exit through?</p>
+          <div id="doorButtons" style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;"></div>
+        </div>
+      </div>
+
+      <div id="boardColumn">
+        <div id="board"></div>
+
+        <div id="floatingActionsLeft" class="board-actions" aria-label="Main game actions">
+          <button id="mobileStartGameBtn" class="topIconBtn startMobileBtn" title="Start Game" onclick="document.getElementById('startBtn')?.click()">
+            <span class="icon">▶</span>
+            <span class="label">Start Game</span>
+          </button>
+          <button id="openNotebookBtn" class="topIconBtn notebookBtn" title="Notebook">
+            <span class="icon">📖</span>
+            <span class="label">Notebook</span>
+          </button>
+          <button id="openAccusationBtn" class="topIconBtn accusationBtn" title="Suggest / Accuse">
+            <span class="icon">⚖</span>
+            <span class="label">Suggest / Accuse</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="rightPanel" data-mobile-panel="">
+        <button id="mobilePanelClose" type="button" aria-label="Close panel" onclick="closeMobilePanel()">✕</button>
+        <div id="ui">
+          <div id="playersPanelSection" class="responsive-panel-section">
+          <input id="nameInput" placeholder="Your name" style="display:none" />
+          <input id="codeInput" placeholder="Game code" style="display:none" />
+          <button id="createBtn" style="display:none">Create</button>
+          <button id="joinBtn" style="display:none">Join</button>
+
+          <div class="caseCodeBox">
+            <span class="caseLabel">CASE CODE</span>
+            <span id="gameCode" class="caseValue">-</span>
+          </div>
+
+          <div class="uiTitleRow">
+            <h1 class="uiGameTitle">CLUEDO</h1>
+          </div>
+
+          <p id="status" style="display:none">Not connected</p>
+
+          <div id="playersRow"></div>
+
+          <button id="startBtn" class="startFullBtn">▶ Start Game</button>
+
+          <ul id="players" style="display:none"></ul>
+          </div>
+
+          <div id="actionsPanelSection" class="responsive-panel-section">
+          <h3>Actions</h3>
+          <p id="gameStatus" style="margin-bottom: 12px; font-weight: bold; color: #d4af37; text-align: center;"></p>
+          <div style="display: flex; gap: 8px;">
+            <button id="rollDiceBtn" class="btn-back-link"
+              style="flex: 1; max-width: none; font-size: 16px; padding: 10px 8px;">🎲 Roll Dice</button>
+            <button id="endTurnBtn" class="btn-back-link"
+              style="flex: 1; max-width: none; font-size: 16px; padding: 10px 8px;">🛑 End Turn</button>
+          </div>
+
+          <div class="dpad-wrapper" style="display: flex; align-items: center; justify-content: center; position: relative; margin: 10px 0; gap: 15px;">
+            <div class="dpad-container" style="flex-shrink: 0; position: relative; z-index: 2;">
+              <div></div>
+              <button id="btnUp" class="dpad-btn" disabled>▲</button>
+              <div></div>
+              <button id="btnLeft" class="dpad-btn" disabled>◀</button>
+              <div></div>
+              <button id="btnRight" class="dpad-btn" disabled>▶</button>
+              <div></div>
+              <button id="btnDown" class="dpad-btn" disabled>▼</button>
+              <div></div>
+            </div>
+            <button id="secretPassageBtn" class="secret-passage-btn" disabled title="Secret Passage" style="position: static; margin-left: 10px; flex-shrink: 0;">
+              <img src="assets/secret_passage.png" alt="Secret Passage" />
+            </button>
+          </div>
+          </div>
+
+          <div id="handPanelSection" class="responsive-panel-section">
+          <h3>Your hand</h3>
+          <div id="hand" class="hand-grid"></div>
+          </div>
+
+          <div class="row-3" style="display:none;">
+            <select id="suspectSelect"></select>
+            <select id="weaponSelect"></select>
+            <select id="roomSelect"></select>
+          </div>
+
+          <div class="row" style="display:none;">
+            <button id="suggestBtn" disabled>Suggest</button>
+            <button id="accuseBtn" disabled>Accuse</button>
+          </div>
+        </div>
+      </div>
+
+      <nav id="mobileSideIcons" aria-label="Responsive game panels">
+        <button type="button" class="sideIconBtn" data-panel="players" onclick="toggleMobilePanel('players')" title="Players">👥</button>
+        <button type="button" class="sideIconBtn" data-panel="actions" onclick="toggleMobilePanel('actions')" title="Actions">🎲</button>
+        <button type="button" class="sideIconBtn" data-panel="hand" onclick="toggleMobilePanel('hand')" title="Your hand">🃏</button>
+      </nav>
+    </div>
+
+    <script>
+      function closeMobilePanel() {
+        const panel = document.getElementById('rightPanel');
+        if (!panel) return;
+        panel.classList.remove('is-mobile-open');
+        panel.dataset.mobilePanel = '';
+        panel.setAttribute('data-mobile-panel', '');
+        ['players', 'actions', 'hand'].forEach((name) => {
+          const section = document.getElementById(`${name}PanelSection`);
+          if (section) section.style.display = '';
+        });
+        document.querySelectorAll('#mobileSideIcons .sideIconBtn').forEach((btn) => btn.classList.remove('is-active'));
+      }
+
+      function positionMobilePanelNearIcon(panelName) {
+        const panel = document.getElementById('rightPanel');
+        const icon = document.querySelector(`#mobileSideIcons .sideIconBtn[data-panel="${panelName}"]`);
+        if (!panel || !icon) return;
+
+        const gap = 12;
+        const iconRect = icon.getBoundingClientRect();
+        const panelRect = panel.getBoundingClientRect();
+        const viewportW = window.innerWidth;
+        const viewportH = window.innerHeight;
+
+        // La fenêtre s'ouvre juste à gauche de l'icône, comme le chat s'ouvre à côté de son bouton.
+        const right = Math.max(8, viewportW - iconRect.left + gap);
+        let top = iconRect.top + iconRect.height / 2 - panelRect.height / 2;
+        top = Math.max(8, Math.min(top, viewportH - panelRect.height - 8));
+
+        panel.style.setProperty('right', `${right}px`, 'important');
+        panel.style.setProperty('top', `${top}px`, 'important');
+      }
+
+      function toggleMobilePanel(panelName) {
+        const panel = document.getElementById('rightPanel');
+        if (!panel) return;
+        const isSamePanelOpen = panel.classList.contains('is-mobile-open') && panel.dataset.mobilePanel === panelName;
+        if (isSamePanelOpen) {
+          closeMobilePanel();
+          return;
+        }
+        panel.dataset.mobilePanel = panelName;
+        panel.setAttribute('data-mobile-panel', panelName);
+        panel.classList.add('is-mobile-open');
+
+        // Même logique pour Players, Actions et Your hand : on montre uniquement la section demandée.
+        ['players', 'actions', 'hand'].forEach((name) => {
+          const section = document.getElementById(`${name}PanelSection`);
+          if (section) section.style.display = name === panelName ? 'block' : 'none';
+        });
+
+        document.querySelectorAll('#mobileSideIcons .sideIconBtn').forEach((btn) => {
+          btn.classList.toggle('is-active', btn.dataset.panel === panelName);
+        });
+
+        // Deux frames pour laisser le CSS appliquer la bonne taille avant le calcul.
+        requestAnimationFrame(() => {
+          positionMobilePanelNearIcon(panelName);
+          requestAnimationFrame(() => positionMobilePanelNearIcon(panelName));
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        const panel = document.getElementById('rightPanel');
+        if (panel?.classList.contains('is-mobile-open') && panel.dataset.mobilePanel) {
+          positionMobilePanelNearIcon(panel.dataset.mobilePanel);
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        const icon = event.target.closest?.('#mobileSideIcons .sideIconBtn');
+        if (!icon) return;
+        event.preventDefault();
+        event.stopPropagation();
+        const panelName = icon.dataset.panel;
+        if (panelName) toggleMobilePanel(panelName);
+      }, true);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMobilePanel();
+      });
+    </script>
+
+    <div id="floatingChat">
+      <div id="chatPanel" class="chatPanelHidden">
+        <div class="chatPanelHeader">
+          <span>Chat</span>
+          <button id="closeChatBtn">✕</button>
+        </div>
+        <div id="chatMessages"></div>
+        <div id="emojiPicker" class="emojiPicker hidden">
+          😀 😂 😍 🥰 😎 🤔 😮 😢 😡 🤯 👍 👎 👏 🙌 🤝 🫡 💀 🔥 ❤️ 💯 🎉 🎲 🔍 🗡️ 🕵️ 🏆 ⚖️ 🔫 🪓 🕯️
+        </div>
+        <div class="chatRow">
+          <div class="chatInputWrapper">
+            <input id="chatInput" placeholder="Type your message..." />
+            <button type="button" id="emojiToggleBtn" class="emojiToggleBtn" title="Emojis">😊</button>
+          </div>
+          <button type="button" id="sendChatBtn">Send</button>
+        </div>
+      </div>
+
+      <button id="chatToggleBtn" class="topIconBtn chatToggleIcon" title="Chat">
+        <span class="icon">💬</span>
+        <span id="chatBadge" class="chatBadge hidden">0</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- MODAL: RESULT (Victory / Defeat)                  -->
+  <!-- ================================================ -->
+  <div id="resultModal" class="result-modal-overlay hidden">
+    <div id="resultModalInner" class="result-modal">
+      <h1 id="resultTitle" class="result-title"></h1>
+      <p id="resultSubtitle" class="result-subtitle"></p>
+      <div class="result-cards">
+        <div class="result-card">
+          <div class="result-card-img-wrap">
+            <img id="resultSuspectImg" src="" alt="" class="result-card-img result-card-img--suspect">
+          </div>
+          <div id="resultSuspectLabel" class="result-card-label"></div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-img-wrap">
+            <img id="resultWeaponImg" src="" alt="" class="result-card-img result-card-img--weapon">
+          </div>
+          <div id="resultWeaponLabel" class="result-card-label"></div>
+        </div>
+        <div class="result-card">
+          <div class="result-card-img-wrap">
+            <img id="resultRoomImg" src="" alt="" class="result-card-img result-card-img--room">
+          </div>
+          <div id="resultRoomLabel" class="result-card-label"></div>
+        </div>
+      </div>
+      <p id="resultSentence" class="result-sentence"></p>
+      <button class="btn-play-gold result-close-btn" onclick="window.cleanupOldGame(); showView('view-home');">BACK TO MENU</button>
+    </div>
+  </div>
+
+  <!-- BACKGROUND AUDIO -->
+  <audio id="bg-music" src="assets/audio/theme.wav" loop preload="auto"></audio>
+
+  <!-- AUTH CUSTOM MODAL -->
+  <div id="authCustomModal"
+    style="display: none; position: fixed; inset: 0; background: rgba(5,2,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+    <div
+      style="background: rgba(14, 5, 2, 0.95); padding: 50px 40px; border-radius: 12px; border: 2px solid #fcb823; box-shadow: 0 0 50px rgba(144, 0, 37, 0.6); max-width: 650px; width: 90%; text-align: center; font-family: 'Special Elite', cursive;">
+      <h3 id="authModalTitle"
+        style="color: #fcb823; margin: 0 0 25px 0; font-size: 34px; letter-spacing: 2px; text-shadow: 0 2px 15px rgba(144, 0, 37, 0.9);">
+        Title</h3>
+      <p id="authModalText" style="color: #f2eee9; font-size: 20px; margin: 0 0 30px 0; line-height: 1.6;"></p>
+
+      <input type="text" id="authModalInput"
+        style="display: none; width: 100%; padding: 18px; margin-bottom: 30px; background: rgba(255,255,255,0.05); border: 1px solid #fcb823; color: #fff; font-family: inherit; font-size: 22px; box-sizing: border-box; outline: none; border-radius: 6px;" />
+
+      <div style="display: flex; gap: 20px; justify-content: center;">
+        <button id="authModalCancel" class="btn-settings-outline"
+          style="display: none; flex: 1; padding: 15px; font-size: 20px;">Cancel</button>
+        <button id="authModalOk" class="btn-play-gold" style="flex: 1; padding: 15px; font-size: 20px;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="client.js"></script>
+
+
+</body>
+
+</html>
