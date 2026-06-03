@@ -8,6 +8,8 @@ The system handles up to 6 concurrent players per match with full state synchron
 
 > **Available across all platforms** - accessible as a **web application** in any modern browser, fully **mobile-responsive** for on-the-go play, and distributed as a **native desktop application** for both **Windows** and **Linux** via Electron.
 
+> **Engineering Note - No Frameworks, By Design:** The client layer is built entirely in **Vanilla JavaScript and native CSS** - no React, no Vue, no Tailwind, no abstraction layer of any kind. This is a deliberate architectural constraint, not a limitation. The goal was to demonstrate mastery of the primitives that frameworks are built on top of: raw DOM manipulation, manual event propagation, hand-rolled state synchronisation between client and server, explicit lifecycle management, and CSS layout systems from first principles. Building a real-time multiplayer game without framework scaffolding exposes the full complexity of the problem domain - the same class of problems that game engines like Unity or Unreal abstract behind their own systems. Coordinating Phaser's frame-driven `update()` loop with an asynchronous Socket.IO event stream, keeping DOM-based UI state consistent with server-authoritative game state across concurrent socket connections, and managing rendering invalidation manually are problems a reactive framework would typically obscure entirely. Solving them at the primitive level builds a precise, transferable understanding of how event queues, rendering pipelines, and state propagation actually behave under the hood.
+
 ---
 
 ## Engine & Rendering
