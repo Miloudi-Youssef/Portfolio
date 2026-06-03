@@ -50,6 +50,24 @@ The architecture explores a full pipeline from raw document intake to graph-base
 
 ---
 
+### Cluedo - Real-Time Multiplayer Online Game
+
+![Status](https://img.shields.io/badge/status-production-brightgreen)
+![Stack](https://img.shields.io/badge/stack-Node.js%20%7C%20Socket.IO%20%7C%20Phaser%203%20%7C%20Electron-blueviolet)
+![Players](https://img.shields.io/badge/players-2--6%20concurrent-orange)
+
+A production-grade, full-stack multiplayer adaptation of the classic Cluedo board game, built from scratch with a custom server-authoritative game engine. The system manages up to 6 concurrent players per match with real-time state synchronisation, private information enforcement, and a multi-step suggestion/disproof state machine - all coordinated through a rules engine running on Node.js over persistent WebSocket connections.
+
+The board is rendered via a Phaser 3 hardware-accelerated canvas pipeline on a 25×25 tile grid with sprite-based player tokens, animated movement, and full room/corridor/door cell logic. The client layer is written entirely in Vanilla JavaScript and native CSS - no frontend framework - to demonstrate direct command of the primitives underlying reactive systems.
+
+Distributed as a live web application, a mobile-responsive browser client, and a cross-platform native desktop application for Windows and Linux via Electron.
+
+**Tech Stack:** Node.js, Express 5, Socket.IO 4, Phaser 3, Vanilla JavaScript, CSS, Electron
+
+**[→ View Project](https://github.com/Miloudi-Youssef/Portfolio/tree/master/00-Cluedo-multiplayer-game-online)**
+
+---
+
 ## All Projects
 
 ---
@@ -129,7 +147,10 @@ A full-stack task management application built with React on the frontend and Dj
 ## Skills Demonstrated
 
 - **AI & Knowledge Graphs**: RAG pipelines, graph-based reasoning, document extraction
+- **Real-Time Systems**: WebSocket event protocols, server-authoritative game engines, concurrent state management
 - **Full-Stack Web Development**: REST APIs, SPA frontends, backend services
+- **Game Development**: Phaser 3 rendering pipeline, tile-based board systems, finite state machines
+- **Cross-Platform Distribution**: Electron desktop packaging for Windows and Linux
 - **Systems Programming**: C, memory management, file I/O
 - **Mobile Development**: Android application design with Kotlin
 - **Algorithm Design**: Constraint solving, search algorithms
@@ -143,11 +164,13 @@ A full-stack task management application built with React on the frontend and Dj
 | Category | Technologies |
 |---|---|
 | Languages | Python, Java, JavaScript, TypeScript, C, Kotlin |
-| Frontend | React, HTML, CSS |
-| Backend | FastAPI, Django, Spring Boot, Node.js |
+| Frontend | React, Phaser 3, HTML, CSS, Vanilla JS |
+| Backend | FastAPI, Django, Spring Boot, Node.js, Express 5 |
+| Real-Time | Socket.IO 4, WebSocket |
 | Databases | Neo4j, SQL |
 | AI / ML | LangChain, GraphRAG concepts, LLM integrations |
 | Mobile | Android SDK, Kotlin |
+| Desktop | Electron (Windows, Linux) |
 | DevOps | Docker, Docker Compose |
 | Tools | Git, Maven, Gradle |
 
